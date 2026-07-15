@@ -1,0 +1,30 @@
+site_name: DryGram Documentation
+nav:
+  - Introduction: index.md
+  - Installation: installation.md
+  - Quick Start: quickstart.md
+  - Guides:
+      - Authentication: authentication.md
+      - Sessions: sessions.md
+      - Event Pipeline: events.md
+      - Gates: gates.md
+      - Listeners: listeners.md
+      - Media: media.md
+      - Keyboards: keyboards.md
+      - Callbacks: callback.md
+      - Premium: premium.md
+      - Stickers: stickers.md
+      - Custom Emoji: emoji.md
+      - Stories: stories.md
+      - Business: business.md
+      - Voice Calls: voice_calls.md
+      - Video Calls: video_calls.md
+      - Plugins: plugins.md
+      - Raw Protocol: raw_protocol.md
+      - Uploads: uploads.md
+      - Downloads: downloads.md
+      - Markdown parsing: markdown.md
+      - HTML parsing: html.md
+  - FAQ: faq.md
+  - API Reference: api_reference.md
+theme: material

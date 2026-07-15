@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "drygram"
+version = "1.0.0"
+description = "A completely original, production-grade asynchronous Telegram MTProto framework."
+readme = "README.md"
+requires-python = ">=3.13"
+license = { text = "MIT" }
+authors = [
+    { name = "Santhu", email = "telegramsanthu@gmail.com" }
+]
+classifiers = [
+    "Programming Language :: Python :: 3.13",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Development Status :: 5 :: Production/Stable",
+    "Framework :: AsyncIO"
+]
+dependencies = [
+    "cryptography>=42.0.0",
+    "aiosqlite>=0.20.0",
+    "redis>=5.0.0",
+    "motor>=3.3.0",
+    "asyncpg>=0.29.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=4.1.0"
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
