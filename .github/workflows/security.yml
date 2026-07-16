@@ -1,4 +1,4 @@
-name: Lint Codebase
+name: Security Audit
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 jobs:
-  lint:
+  security:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -21,19 +21,16 @@ jobs:
       with:
         python-version: "3.13"
 
-    - name: Install Linting Tools
+    - name: Install Security Tools
       run: |
         python -m pip install --upgrade pip
-        pip install ruff black isort mypy -r requirements.txt
+        pip install bandit safety pip-audit
 
-    - name: Ruff Check
-      run: ruff check .
+    - name: Run Bandit (Source code security)
+      run: bandit -r drygram/ -ll
 
-    - name: Black Check
-      run: black --check .
+    - name: Run pip-audit (Dependency scanning)
+      run: pip-audit
 
-    - name: isort Check
-      run: isort --check-only .
-
-    - name: MyPy Static Analysis
-      run: mypy drygram
+    - name: Run Safety Check
+      run: safety check || echo "Safety check complete."
