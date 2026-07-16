@@ -1,0 +1,11 @@
+include LICENSE
+include README.md
+include CHANGELOG.md
+include CONTRIBUTING.md
+include pyproject.toml
+include setup.py
+recursive-include drygram *.py
+recursive-include docs *.md *.yml *.css *.js *.png
+recursive-include examples *.py
+global-exclude __pycache__
+global-exclude *.py[co]

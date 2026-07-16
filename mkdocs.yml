@@ -1,4 +1,55 @@
 site_name: DryGram Documentation
+site_url: https://github.com/TG-BOTSNETWORK/drygram
+repo_name: TG-BOTSNETWORK/drygram
+repo_url: https://github.com/TG-BOTSNETWORK/drygram
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+extra_css:
+  - assets/css/custom.css
+
+extra_javascript:
+  - assets/js/custom.js
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - toc:
+      permalink: true
+
 nav:
   - Introduction: index.md
   - Installation: installation.md
@@ -6,25 +57,42 @@ nav:
   - Guides:
       - Authentication: authentication.md
       - Sessions: sessions.md
-      - Event Pipeline: events.md
-      - Gates: gates.md
-      - Listeners: listeners.md
+      - Client: client.md
+      - Messages: messages.md
       - Media: media.md
-      - Keyboards: keyboards.md
-      - Callbacks: callback.md
-      - Premium: premium.md
-      - Stickers: stickers.md
-      - Custom Emoji: emoji.md
-      - Stories: stories.md
-      - Business: business.md
-      - Voice Calls: voice_calls.md
-      - Video Calls: video_calls.md
-      - Plugins: plugins.md
-      - Raw Protocol: raw_protocol.md
       - Uploads: uploads.md
       - Downloads: downloads.md
+      - Business: business.md
+      - Premium: premium.md
+      - Stories: stories.md
+      - Voice: voice.md
+      - Video: video.md
+      - Streaming: streaming.md
+      - Keyboards: keyboards.md
+      - Callbacks: callbacks.md
       - Markdown parsing: markdown.md
       - HTML parsing: html.md
-  - FAQ: faq.md
-  - API Reference: api_reference.md
-theme: material
+      - Filters (Gates): filters.md
+      - Listeners: listeners.md
+      - Plugins: plugins.md
+      - Middleware: middleware.md
+  - Storage:
+      - Overview: storage.md
+      - SQLite: sqlite.md
+      - MongoDB: mongodb.md
+      - Redis: redis.md
+      - PostgreSQL: postgres.md
+  - Advanced:
+      - Configuration: configuration.md
+      - Logging: logging.md
+      - Scheduler: scheduler.md
+      - Deployment: deployment.md
+      - Security: security.md
+      - Architecture: architecture.md
+      - Performance: performance.md
+      - Testing: testing.md
+  - Reference:
+      - FAQ: faq.md
+      - Migration: migration.md
+      - API Reference: reference/api.md
+      - Raw MTProto: reference/raw.md

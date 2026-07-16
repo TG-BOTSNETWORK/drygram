@@ -1,24 +1,39 @@
 [build-system]
-requires = ["setuptools>=61.0.0", "wheel"]
+requires = ["setuptools>=80", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "drygram"
+name = "DryGram"
 version = "1.0.0"
-description = "A completely original, production-grade asynchronous Telegram MTProto framework."
+description = "Modern asynchronous Telegram MTProto framework."
+
 readme = "README.md"
+
+license = {text="GPL-3.0"}
+
 requires-python = ">=3.13"
-license = { text = "MIT" }
+
 authors = [
-    { name = "Santhu", email = "telegramsanthu@gmail.com" }
+    {name="Santhu", email="telegramsanthu@gmail.com"}
 ]
+
+keywords = [
+    "telegram",
+    "mtproto",
+    "asyncio",
+    "telegram-client",
+    "telegram-framework"
+]
+
 classifiers = [
+    "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.13",
-    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Operating System :: OS Independent",
-    "Development Status :: 5 :: Production/Stable",
-    "Framework :: AsyncIO"
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Development Status :: 5 - Production/Stable"
 ]
+
 dependencies = [
     "cryptography>=42.0.0",
     "aiosqlite>=0.20.0",
@@ -28,12 +43,26 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+calls = [
+    "py-tgcalls==2.3.3",
+    "ntgcalls==2.2.5"
+]
+voice = [
+    "py-tgcalls==2.3.3",
+    "ntgcalls==2.2.5"
+]
+streaming = [
+    "py-tgcalls==2.3.3",
+    "ntgcalls==2.2.5"
+]
 dev = [
     "pytest>=8.0.0",
     "pytest-asyncio>=0.23.0",
     "pytest-cov>=4.1.0"
 ]
 
-[tool.pytest.ini_options]
-asyncio_mode = "auto"
-testpaths = ["tests"]
+[project.urls]
+Homepage = "https://github.com/TG-BOTSNETWORK/drygram"
+Documentation = "https://github.com/TG-BOTSNETWORK/drygram/docs"
+Repository = "https://github.com/TG-BOTSNETWORK/drygram"
+"Bug Tracker" = "https://github.com/TG-BOTSNETWORK/drygram/issues"
