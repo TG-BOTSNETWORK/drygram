@@ -1,30 +1,35 @@
-# Python build and cache artifacts
+# Python cache and compiled files
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.so
-*.egg
-*.egg-info/
-dist/
-build/
+*.py[cod]
+*$py.class
 
-# Testing and coverage reports
-htmlcov/
-.coverage
+# Testing and coverage
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
 .cache/
+.coverage
 coverage.xml
+htmlcov/
 
-# IDE configuration and environment files
+# Build and packaging distributions
+dist/
+build/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# IDE configurations
 .idea/
 .vscode/
+
+# Local environments and virtual environments
 .env
 .env.*
 venv/
 .venv/
+ENV/
+env/
 
 # Documentation builds
 docs/site/
