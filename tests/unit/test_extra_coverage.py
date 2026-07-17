@@ -494,6 +494,22 @@ async def test_command_and_gates_and_version():
     assert v.check_python() in (True, False)
     assert v.check_dependencies() in (True, False)
     assert v.check_platform() in (True, False)
+    assert isinstance(v.runtime_info(), dict)
+    assert isinstance(v.__title__, str)
+    assert isinstance(v.__version__, str)
+    assert isinstance(v.__version_info__, tuple)
+    assert isinstance(v.__release_date__, str)
+    assert isinstance(v.__api_layer__, int)
+    assert isinstance(v.__telegram_api_version__, str)
+    assert isinstance(v.__author__, str)
+    assert isinstance(v.__email__, str)
+    assert isinstance(v.__license__, str)
+    assert isinstance(v.__homepage__, str)
+    assert isinstance(v.__repository__, str)
+    assert isinstance(v.__documentation__, str)
+    assert isinstance(v.__support_chat__, str)
+    assert isinstance(v.__updates_channel__, str)
+    assert isinstance(v.__python_requires__, str)
     
     # Test client decorators
     from drygram import DryClient
@@ -775,6 +791,33 @@ async def test_command_and_gates_full_coverage():
     assert Gates.sender(12345678)(mock_msg) is True
     assert Gates.premium()(mock_msg) is False
     assert Gates.business()(mock_msg) is False
+
+
+def test_crypto_backends():
+    from drygram.crypto.backend import (
+        current_backend,
+        backend_name,
+        backend_version,
+        supports_acceleration,
+        is_accelerated,
+        encrypt_ige,
+        decrypt_ige
+    )
+    
+    assert current_backend() == "cryptography"
+    assert isinstance(backend_name, str)
+    assert isinstance(backend_version, str)
+    assert supports_acceleration() is False
+    assert is_accelerated() is False
+    
+    key = b"1" * 32
+    iv = b"2" * 32
+    data = b"hello world 1234" # 16 bytes
+    
+    enc = encrypt_ige(data, key, iv)
+    dec = decrypt_ige(enc, key, iv)
+    assert dec == data
+
 
 
 
