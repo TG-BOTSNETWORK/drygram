@@ -32,7 +32,13 @@ from drygram.errors.rpc import (
 )
 from drygram.parsers.markdown import MarkdownParser
 from drygram.parsers.html import HTMLParser
-from drygram.version import VERSION
+from drygram.version import (
+    __title__, __version__, __version_info__, __release_date__,
+    __api_layer__, __telegram_api_version__, __author__, __email__,
+    __license__, __homepage__, __repository__, __documentation__,
+    __support_chat__, __updates_channel__, __python_requires__,
+    VERSION
+)
 from drygram.compat import (
     SessionManager, MediaUploader, MediaDownloader, BusinessManager,
     StoryManager, PremiumManager, StickerManager, EmojiManager,
@@ -46,6 +52,21 @@ from drygram.compat import (
 )
 
 __all__ = [
+    "__title__",
+    "__version__",
+    "__version_info__",
+    "__release_date__",
+    "__api_layer__",
+    "__telegram_api_version__",
+    "__author__",
+    "__email__",
+    "__license__",
+    "__homepage__",
+    "__repository__",
+    "__documentation__",
+    "__support_chat__",
+    "__updates_channel__",
+    "__python_requires__",
     "VERSION",
     "DryClient",
     "BridgeClient",
