@@ -76,6 +76,7 @@ nav:
       - Listeners: listeners.md
       - Plugins: plugins.md
       - Middleware: middleware.md
+      - Commands: commands.md
   - Storage:
       - Overview: storage.md
       - SQLite: sqlite.md

@@ -47,16 +47,44 @@ Designed with architectural originality at its core, DryGram does NOT duplicate 
 
 ## Installation
 
-### Stable Release
+### Installation Options
+
+#### 1. Standard Installation (No native compilers required)
 Install the core package via PyPI:
 ```bash
 pip install drygram
 ```
 
-### Installation with Optional Extras
-For external voice and video calling support:
+#### 2. Optional Crypto Installation
+Install with the optional `crypto` dependency group:
+```bash
+pip install "drygram[crypto]"
+```
+*Note: Installs the required standard cryptography package without requiring native compilers or Visual Studio Build Tools.*
+
+#### 3. Optional Voice & Calling Support
+Install with integrations for voice and video calling:
 ```bash
 pip install "drygram[calls]"
+```
+
+#### 4. Optional Database Support
+Install pluggable session database stores:
+```bash
+# MongoDB support
+pip install "drygram[mongodb]"
+
+# Redis support
+pip install "drygram[redis]"
+
+# PostgreSQL support
+pip install "drygram[postgres]"
+```
+
+#### 5. Development Installation
+Install for library contribution and testing:
+```bash
+pip install "drygram[dev]"
 ```
 
 ### Alternative Package Managers
@@ -165,6 +193,18 @@ mkdocs serve
 - **Linux**: Ubuntu, Debian, Arch Linux, Fedora, CentOS, and Alpine.
 - **macOS**: Intel and Apple Silicon (M1/M2/M3).
 - **Containerization**: Full support for Docker and Kubernetes environments.
+
+---
+
+## Cryptographic Backend & Performance
+
+DryGram dynamically manages cryptographic execution via its built-in Backend Manager:
+
+| Backend | Implementation | Acceleration | Performance Note |
+| :--- | :--- | :--- | :--- |
+| **Cryptography** | Pure Python Engine | **Disabled** | High compatibility; works out-of-the-box on any platform without compiler tools. |
+
+DryGram operates exclusively on standard Python-compatible cryptography libraries, ensuring compiled C extensions or platform-specific Visual Studio Build Tools are never required.
 
 ---
 
