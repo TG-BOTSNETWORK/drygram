@@ -1,57 +1,74 @@
 # Installation Guide
 
-This guide details the prerequisites and step-by-step instructions for installing DryGram and setting up its optional database backends.
+This guide details the prerequisites and step-by-step instructions for installing DryGram, configuring optional dependency extras, and leveraging the built-in Crypto Engine.
+
+---
 
 ## Prerequisites
 
 - **Python**: Version 3.13 or newer is required.
-- **Operating System**: Linux (Ubuntu, Debian, CentOS), macOS (11+), or Windows (10, 11, Server).
+- **Operating System**: Linux (Ubuntu, Debian, Fedora, Arch Linux, CentOS, Alpine), macOS (Intel & Apple Silicon), or Windows (10, 11).
 - **Core Dependencies**:
-  - `cryptography>=42.0.0` (for AES session encryption and MTProto transport encryption)
-  - `aiosqlite>=0.20.0` (default SQLite session engine)
+  - `cryptography>=42.0.0` (Core python-cryptography provider)
+  - `aiosqlite>=0.20.0` (Default session engine)
 
-## Package Installation
+---
 
-To install DryGram via pip:
+## Installation Options
 
+### 1. Standard Installation
+Installs core features only. Does not require a compiler (e.g., MSVC, GCC, Clang, or Rust) to build native binary extensions:
 ```bash
 pip install drygram
 ```
 
-To install from source (editable mode for developers):
-
+### 2. Optional Crypto Installation
+Installs with the standard `crypto` dependency group (which installs the required `cryptography` package):
 ```bash
-git clone https://github.com/TG-BOTSNETWORK/drygram.git
-cd DryGram
-pip install -e .
+pip install "drygram[crypto]"
 ```
 
-## Setting up Backend Databases
-
-Depending on your scaling needs, install the driver package matching your desired session storage backend:
-
-### Redis Session Backend
-Requires the `redis` client package:
+### 3. Optional Voice & Calling Interoperability
+Installs interfaces and integration modules for external voice/video streaming libraries:
 ```bash
-pip install redis>=5.0.0
+pip install "drygram[calls]"
 ```
 
-### MongoDB Session Backend
-Requires the `motor` asynchronous MongoDB driver:
+### 4. Pluggable Session Databases
+Install drivers for high-performance session databases:
 ```bash
-pip install motor>=3.3.0
+# MongoDB support
+pip install "drygram[mongodb]"
+
+# Redis support
+pip install "drygram[redis]"
+
+# PostgreSQL support
+pip install "drygram[postgres]"
 ```
 
-### PostgreSQL Session Backend
-Requires the `asyncpg` asynchronous PostgreSQL driver:
+### 5. Developer Tools
+Install development, unit testing, and documentation formatting tools:
 ```bash
-pip install asyncpg>=0.29.0
+pip install "drygram[dev]"
 ```
 
-## Verifying the Installation
+---
 
-After installing, confirm that the drygram package initializes correctly and lists the correct layer compatibility:
+## Crypto Backend Manager
 
-```bash
-python -c "import drygram; print(drygram.VERSION)"
+DryGram features a built-in **Crypto Backend Manager** that exposes details of the active cryptographic engine.
+
+### Cryptography Backend
+- **Pure Python**: DryGram operates on a pure-Python cryptography backend backed by the standard `cryptography` package.
+- **Compiler-Free**: Installing DryGram requires zero compiler setup, ensuring out-of-the-box compatibility across all major platforms and architectures (including Windows, Linux, macOS, and ARM64).
+- **Stable API**: Cryptographic APIs (`Cipher.encrypt_ige`, `Cipher.decrypt_ige`) are exposed consistently.
+
+### Checking Active Backend Status
+```python
+from drygram.crypto import current_backend, supports_acceleration, is_accelerated
+
+print("Active Backend:", current_backend())         # Outputs "cryptography"
+print("Hardware Accelerated:", supports_acceleration()) # Outputs False
+print("Is Accelerated:", is_accelerated())          # Outputs False
 ```
